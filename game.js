@@ -26,6 +26,7 @@ function update(){
 }
 
 function draw(){
+    gameBoard.innerHTML = '' // clear game board before everydraw 
     drawSnake(gameBoard)
 }
 
