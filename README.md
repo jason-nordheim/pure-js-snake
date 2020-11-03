@@ -8,12 +8,12 @@ You will need to run a local server if you want to run the project locally.
 
 1. Clone the repository - In the desired directory, clone the repository: 
 ```sh
-git clone https://github.com/jason-nordheim/pure-js-snake-wds
+git clone https://github.com/jason-nordheim/pure-js-snake
 ```
 
 2. Navigate to the project root 
 ```sh
-cd pure-js-snake-wds/public 
+cd pure-js-snake/public 
 ```
 
 > If you do not have `live-server`, you can install it globally (which will make the package available in any directory) via NPM by entering the following command: `npm install -g live-server` 
