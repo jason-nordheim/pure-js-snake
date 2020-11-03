@@ -13,7 +13,7 @@ git clone https://github.com/jason-nordheim/pure-js-snake-wds
 
 2. Navigate to the project root 
 ```sh
-cd pure-js-snake-wds 
+cd pure-js-snake-wds/public 
 ```
 
 > If you do not have `live-server`, you can install it globally (which will make the package available in any directory) via NPM by entering the following command: `npm install -g live-server` 
