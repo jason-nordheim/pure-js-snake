@@ -1,39 +1,41 @@
-
 import { update as updateFood, draw as drawFood } from './food.js'
 import { outsideGrid } from './grid.js'
 import {
-    SNAKE_SPEED, 
     draw as drawSnake, 
     update as updateSnake, 
     getSnakeHead, 
+    getSnakeSpeed, 
     snakeIntersection, 
 } from './snake.js'
-const gameBoard = document.getElementById('game-board')
-let lastRenderTime = 0 
-let gameOver = false 
+import { getLastRender, setLastRender, getStatus, setStatus } from './status.js'
+import { gameBoard } from './elements.js'
 
-/* Setup Game Loop */ 
+/* Game Loop */ 
 function main(currentTime) {
-    if(gameOver){
-        if (confirm('you lost. Press ok to restart')) {
-            window.location = '/' // refresh page
-        }
+    /* check if game is over */
+    if(getStatus().finished){
+        setStatus('game over')
         return 
     }
 
-    const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000
+    /* game in progress... */
+    const secondsSinceLastRender = (currentTime - getLastRender()) / 1000
     window.requestAnimationFrame(main) /* asks the browser when I can render my next frame */
     
     /* do not re-render if ...*/
-    if (secondsSinceLastRender < 1 / SNAKE_SPEED) return 
+    if (secondsSinceLastRender < 1 / getSnakeSpeed()) {
+        return 
+    }
     
-    lastRenderTime = currentTime
+    setLastRender(currentTime) 
     
     update()
     draw()
 }
 
+
 function update(){
+    if(getStatus().paused) return 
     updateSnake()
     updateFood() 
     checkDeath()
@@ -46,9 +48,9 @@ function draw(){
 }
 
 function checkDeath() {
-    gameOver = outsideGrid(getSnakeHead()) || snakeIntersection()
+    if(outsideGrid(getSnakeHead()) || snakeIntersection()){
+        setStatus('game over')
+    }
 }
-
-
 
 window.requestAnimationFrame(main)
