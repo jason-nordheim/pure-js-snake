@@ -12,7 +12,7 @@ export const pauseButton = document.querySelector('.pause')
 export const startBtn = document.querySelector('.start')
 
 // game board 
-export const gameBoard = document.getElementById('game-board')
+export const gameBoard = document.querySelector('.game-board')
 
 // setup 
 pauseButton.disabled = true 
