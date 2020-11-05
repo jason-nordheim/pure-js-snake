@@ -1,81 +1,107 @@
 /* font import */
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+:root {
+    --total-width: 100vw;
+    --total-height: 100vh; 
 
+    --lg-header-height: calc(100vh * 0.1);
+    --lg-main-height: calc(100vh * 0.9);
+    --lg-main-width: calc(100vw *0.9); 
+    --lg-board: calc(100vw * 0.75 * 0.9); 
+
+    --txt-color: white; 
+    --bg-color: rgb(9, 8, 8); 
+    --snake-color: hsl(116, 44%, 30%);
+    --food-color: hsl(50, 100%, 50%);
+    --grid-node-border: .25vmin solid black;
+}
 * {
     font-family: 'Share Tech Mono', monospace;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    transition: ease;
 }
 html {
-    height: 100%;
-    width: 100%;
+    height: var(--total-height);
+    width: var(--total-width);
 }
+header, .board-container, .game-controls, .game-controls > button {
+    display: flex;
+}
+body, main, .game-board, .controls, .snake-controls {
+    display: grid;
+}
+
 body {
-    background-color: black;
-    display: grid;
-    grid-template-rows: 10% 90%;
-    height: 100%;
-}
-main {
-    height: 100%;
-    display: grid;
-    grid-template-columns: 75% 25%;
+    grid-template-rows: var(--lg-header-height) var(--lg-main-height);
+    background-color: var(--bg-color); 
+    max-height: fit-content;
 }
 header {
-    color: white;
-    display: flex;
+    grid-row: 1;
+    grid-column: 1;
+    color: var(--txt-color); 
+    border-bottom: 1px solid var(--txt-color);
     justify-content: center;
     align-content: center;
 }
 header > h1 {
     margin: auto;
 }
+main {
+    grid-row: 2;
+    grid-column: 0;
+    max-height: var(--lg-main-height); 
+    grid-template-columns: 72% 28%;
+}
+
 .board-container {
-    display: flex;
-    height: 95%;
-    width: 95%;
-    margin: 1rem 1rem;
+    justify-content: center;
+    align-items: center;
 }
 .game-board {
-    height: 100%;
-    width: 100%;
+    min-height: var(--lg-board); 
+    min-width: var(--lg-board); 
+    max-height: calc(100vh * 0.9);
     background-color: antiquewhite;
-    
+    border-radius: 2px;
     /* Setup grid */
-    display: grid;
     grid-template-rows: repeat(21,1fr); 
     grid-template-columns: repeat(21,1fr);
 }
+.snake, .food {
+    border: var(--grid-node-border); 
+}
 .snake {
-    background-color: hsl(200, 100%, 50%);
-    border: .25vmin solid black;
+    background-color: var(--snake-color); 
 }
 .food {
-    background-color: hsl(50, 100%, 50%);
-    border: .25vmin solid black;
+    background-color: var(--food-color); 
 }
+
 .controls {
-    display: grid;
-    margin: 1rem 1rem;
+    margin: 1rem 0rem;
+    max-width: 100%;
 }
 .game-controls {
-    display: flex;
+    margin: 1rem 0.5rem;
     flex-direction: column;
-    flex: 1;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
 }
 .game-controls > button {
-    display: flex;
-    padding: 1rem 1rem;
+    padding: 1rem 2rem;
     margin-bottom: 1rem;
     justify-content: center;
 }
 .snake-controls {
-    display: grid;
-    grid-template-columns: repeat(3, 8vmin);
-    grid-template-rows: repeat(3, 8vmin);
-    margin: auto;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(3, 30%);
 }
+
+/* Layout the buttons in a way that makes sense */
 .up-btn {
     grid-column: 2;
     grid-row: 1;
@@ -91,4 +117,34 @@ header > h1 {
 .down-btn {
     grid-column: 2;
     grid-row: 3;
+}
+
+/** Mobile styles  **/
+@media only screen and (max-width: 400px) {
+    body {
+        grid-template-columns: 100%;
+        grid-template-rows: 15% 85%;
+        height: 100%;
+    }
+    main {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 75% 25%;
+    }
+    .board-container {
+        display: flex;
+        margin: auto;
+    }
+    .controls {
+        grid-template-columns: 40% 60%;
+        margin: 0.5rem;
+    }
+    .snake-controls { 
+        height: 100%;
+        width: 100%;
+        grid-template-columns: repeat(3, 10vmin);
+        grid-template-rows: repeat(3, 10vmin);
+        margin: 0 25%;
+    }
 }

@@ -46,12 +46,16 @@ upBtn.addEventListener('click', () => goUp())
 window.addEventListener('keydown', e => {
     switch (e.key) {
         case 'ArrowUp': 
+            e.preventDefault() 
             return goUp() 
         case 'ArrowDown': 
+            e.preventDefault() 
              return goDown() 
         case 'ArrowLeft': 
+            e.preventDefault() 
             return goLeft() 
         case 'ArrowRight': 
+            e.preventDefault() 
             return goRight() 
     }   
 })
