@@ -87,6 +87,7 @@ main {
     max-height: 95vmin;
     max-width: 95vmin;
     background-color: antiquewhite;
+    border: 2px solid gray;
     border-radius: 2px;
 
     /* Setup grid */
