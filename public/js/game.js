@@ -42,6 +42,7 @@ function update(){
 }
 
 function draw(){
+    if(getStatus().paused) return 
     gameBoard.innerHTML = '' // clear game board before everydraw 
     drawSnake(gameBoard)
     drawFood(gameBoard)
