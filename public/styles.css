@@ -170,4 +170,22 @@ main {
 }
 
 
+/** Desktop Styles  **/
+@media only screen and (min-width: 860px) {
+    main {
+        grid-template-columns: 75% 25%;
+        grid-template-rows: 100%;
+    }
+    .controls {
+        grid-template-columns: 100%;
+        grid-template-rows: 40% 60%;
+    }
+    .game-board {
+        min-height: 645px; 
+        min-width: 645px; 
+    }
+} 
+
+
+
 
