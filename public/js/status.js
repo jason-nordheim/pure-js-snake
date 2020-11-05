@@ -1,5 +1,5 @@
 // imports 
-import { leftBtn, rightBtn, downBtn, upBtn, startBtn, pauseButton } from './elements.js'
+import { leftBtn, rightBtn, downBtn, upBtn, startBtn, pauseButton, gameBoard } from './elements.js'
 import { randomMove } from './movement.js'
 
 // defaults 
@@ -34,6 +34,7 @@ export function setStatus(newStatus) {
             break 
         case 'game over':
             status.finished = true 
+            gameBoard.style.border = '2px solid red' 
             break 
         case 'new':
             window.location.reload()  
