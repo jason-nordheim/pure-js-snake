@@ -1,9 +1,11 @@
 /* font import */
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 :root {
-    --iphone-width: 375px; 
+    --phone-width: 375px; 
     --tablet-width: 1024px;
-    --arrow-btn-size: 55px; 
+
+    --phone-arrow-btn-size: 55px; 
+    --tablet-arrow-btn-size: 70px; 
 
     --txt-color: white; 
     --bg-main-color: rgb(46, 42, 42); 
@@ -140,14 +142,32 @@ main {
 }
 
 
-
-
-
-
-
-
 /** Tablet Styles  **/
-@media only screen and (min-width: var(--iphone-width + 1)) {
-
-    
+@media only screen and (min-width: 380px) {
+    .game-board {
+        min-height: 510px;
+        min-width: 510px;
+        border-radius: 5px;
+    }
+    .controls {
+        grid-template-columns: 50% 50%;
+        grid-template-rows:  100%;
+    }
+    .game-controls {
+        max-height: unset;
+        max-width: unset;
+    }
+    main {
+        grid-template-rows: 70% 30%;
+    }
+    .snake-controls {
+        grid-template-columns: auto var(--tablet-arrow-btn-size) var(--tablet-arrow-btn-size) var(--tablet-arrow-btn-size) auto; 
+        grid-template-rows:auto var(--tablet-arrow-btn-size) var(--tablet-arrow-btn-size) var(--tablet-arrow-btn-size) auto;
+    }
+    .start, .pause, .snake-controls {
+        font-size: 1.5rem;
+    }
 }
+
+
+
