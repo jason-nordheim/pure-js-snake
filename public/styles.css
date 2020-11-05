@@ -84,8 +84,8 @@ main {
 .game-board {
     min-height: 310px;
     min-width: 310px;
-    max-height: 95vmin;
-    max-width: 95vmin;
+    max-height: 90vmin;
+    max-width: 90vmin;
     background-color: antiquewhite;
     border: 2px solid gray;
     border-radius: 2px;
@@ -182,8 +182,8 @@ main {
         grid-template-rows: 40% 60%;
     }
     .game-board {
-        min-height: 645px; 
-        min-width: 645px; 
+        min-height: 600px; 
+        min-width: 600px; 
     }
 } 
 
